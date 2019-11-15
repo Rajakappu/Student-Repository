@@ -1,0 +1,167 @@
+﻿@model Repository.Models.tbl_Admin
+
+@{
+    ViewBag.Title = "AdminLogin";
+    Layout = "~/Views/Shared/_HomeLayoutPage.cshtml";
+
+
+}
+@*<body style="background-image:Url('/Content/login-background.jpg');padding-bottom:50%;background-repeat:no-repeat;background-size:contain">
+
+        <div align="center">
+
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+                <p>
+
+                </p>
+                <div class="jumbotron" Style="background-color:white;width:50%">
+                    <div class="form-horizontal">
+
+                        <h2>AdminLogin</h2>
+
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Username, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Username, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Username, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        @if (@ViewBag.NotValidUser != null)
+                        {
+                            <label> @ViewBag.NotValidUser</label>
+
+                        }
+                        @if (TempData["Message"] != null)
+                        {
+                            <span style="color:red;">@TempData["Message"].ToString()</span>
+                        }
+                        <div class="form-group">
+                            <div align="center" class="col-md-offset-2 col-md-10">
+                                <input type="submit" value="Login" class="btn btn-info" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </body>*@
+
+
+<style>
+    #box {
+        border: 1px solid black;
+        height: 100%,
+    }
+
+    #main-div {
+        height: 900px;
+        background-image: url('../../Content/login-background.jpg');
+    }
+
+    .insidebox {
+        border: 1px solid black;
+        margin: 10% auto 10% auto;
+        max-width: 500px;
+        min-width: 200px;
+        padding-left: 60px;
+        padding-right: 60px;
+        border-radius: 10px;
+        background-color: white;
+    }
+
+    div h1 {
+        text-align: center;
+    }
+
+    p#para {
+        text-align: center;
+        font-size: 14px;
+    }
+</style>
+
+@using (Html.BeginForm())
+{
+    <body >
+    <div class="jumbotron" style="background-image: url(/Content/admin.jpg);padding-bottom:20%;background-repeat:no-repeat;background-size:cover">
+
+        @Html.AntiForgeryToken()
+        <div><h3 style="color:red">@Html.ValidationMessage("customerror")</h3></div>
+        <div class="insidebox">
+            <br />
+            <div> <h1>Admin Log In</h1></div>
+            <br />
+            <div class="form-group">
+
+                <div class="input-group">
+
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+
+                    @Html.TextBoxFor(x => x.Username, new { @class = "form-control", @placeholder = "Username",@Maxlength="15" })
+                </div>
+
+                <span style="color:red">@Html.ValidationMessageFor(x => x.Username)</span>
+
+
+            </div>
+
+            <div class="form-group">
+
+                <div class="input-group">
+
+                    <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+
+                    @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Password" })
+
+                </div>
+
+                <span style="color:red">@Html.ValidationMessageFor(x => x.Password)</span>
+
+
+
+            </div>
+            @if (@ViewBag.NotValidUser != null)
+            {
+                <label> @ViewBag.NotValidUser</label>
+
+            }
+            @if (TempData["Message"] != null)
+            {
+                <span style="color:red;">@TempData["Message"].ToString()</span>
+            }
+
+
+            <div class="form-group">
+
+                <input type="submit" value="login" class="btn btn-success btn-block " />
+
+            </div>
+
+            <div class="form-group">
+
+                <p style="color:red">@ViewBag.error</p>
+            </div>
+            <div>
+            @Html.ActionLink("Forgot Password", "ResetPasswordforAdmin", "Home")
+                </div>
+            <br />
+        </div>
+        </div>
+    </body>
+
+
+
+
+}
+

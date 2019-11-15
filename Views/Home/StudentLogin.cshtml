@@ -1,0 +1,113 @@
+﻿@model Repository.Models.Extended.Login
+
+@{
+    ViewBag.Title = "StudentLogin";
+    Layout = "~/Views/Shared/_HomeLayoutPage.cshtml";
+
+
+
+}
+    
+    
+        <style>
+            #box {
+                border: 1px solid black;
+                height: 100%,
+            }
+
+           
+
+            .insidebox {
+                border: 1px solid black;
+                margin: 10% auto 10% auto;
+                max-width: 500px;
+                min-width: 200px;
+                padding-left: 60px;
+                padding-right: 60px;
+                border-radius: 10px;
+                background-color: white;
+            }
+
+            div h1 {
+                text-align: center;
+            }
+
+            p#para {
+                text-align: center;
+                font-size: 14px;
+            }
+        </style>
+        <body>
+            <div class="jumbotron" style="background-image: url(/Content/studnet.jpg);padding-bottom:20%;background-repeat:no-repeat;background-size:cover">
+
+                @using (Html.BeginForm())
+                {
+                    @Html.AntiForgeryToken()
+                    <div><h3 style="color:red">@Html.ValidationMessage("customerror")</h3></div>
+                    <div class="insidebox">
+                        <br />
+                        <div> <h2 align="Center">StudentLog In</h2></div>
+                        <br />
+
+                        <div class="form-group">
+
+                            <div class="input-group">
+
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-user"></span></div>
+
+                                @Html.TextBoxFor(x => x.Email, new { @class = "form-control", @placeholder = "Email" })
+                            </div>
+
+                            <span style="color:red">@Html.ValidationMessageFor(x => x.Email)</span>
+
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <div class="input-group">
+
+                                <div class="input-group-addon"><span class="glyphicon glyphicon-lock"></span></div>
+
+                                @Html.PasswordFor(x => x.Password, new { @class = "form-control", @placeholder = "Password" })
+
+                            </div>
+
+                            <span style="color:red">@Html.ValidationMessageFor(x => x.Password)</span>
+
+
+
+                        </div>
+                        @if (@ViewBag.NotValidUser != null)
+                        {
+                            <label> @ViewBag.NotValidUser</label>
+
+                        }
+                        @if (TempData["Message"] != null)
+                        {
+                            <span style="color:red;">@TempData["Message"].ToString()</span>
+                        }
+
+                        <div class="form-group">
+
+                            <input type="submit" value="login" class="btn btn-success btn-block" />
+
+                        </div>
+                        <div class="form-group">
+                            @Html.ActionLink("New Register", "Create", "tbl_Student")
+                        </div>
+
+                        <div class="form-group">
+                            @Html.ActionLink("Forgot Password", "ResetPassword", "Home")
+                        </div>
+                        <div class="form-group">
+
+                            <p style="color:red">@ViewBag.error</p>
+                        </div>
+                    </div>
+
+
+
+                }
+                </div>
+        </body> 

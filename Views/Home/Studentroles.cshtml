@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Studentroles";
+    Layout = "~/Views/Shared/_HomeLayoutPage.cshtml";
+
+}
+
+@*<h2> Studnet Dashboard</h2>
+
+    @if (Session["StudentID"] != null)
+    {
+        <big>  Welcome @Session["FirstName"].ToString()</big>
+
+    }
+
+    <div>
+        @Html.ActionLink("Personal Information", "PersonalInfo", "Admin")
+    </div>
+
+
+    <div>
+        @Html.ActionLink("Avilable Certifications", "CertificationLis2", "Admin")
+    </div>
+
+
+    <div>
+        @Html.ActionLink("Apply List", "MyIndex", "tbl_Apply")
+    </div>
+    <div>
+        @Html.ActionLink(" Avilable Job Lists", "Index", "Jobs")
+    </div>*@
+<body >
+    <div class="d-flex " id="wrapper">
+        <!-- Sidebar -->
+        <div class="bg-light border-right " id="sidebar-wrapper">
+            @*<img src="~/Content/login-background.jpg" />*@
+            <br />
+            <div class="sidebar-heading  text-info" align="center">
+                <h2>Student Dashboard </h2>
+                @if (Session["FirstName"] != null)
+                {
+                    <big>  Welcome @Session["FirstName"].ToString()</big>
+
+
+                }
+            </div>
+            <br />
+            <div class="list-group list-group-flush jumbotron" style="background-color:white">
+                @Html.ActionLink("My Profile", "PersonalInfo", "Admin", "", new { @class = "list-group-item list-group-item-action bg-light " })
+                @Html.ActionLink("Avilable Certifications", "CertificationLis2", "Admin", "", new { @class = "list-group-item list-group-item-action bg-light" })
+                @Html.ActionLink("Your Applied Certification List", "MyIndex", "tbl_Apply", "", new { @class = "list-group-item list-group-item-action bg-light" })
+                @Html.ActionLink(" Avilable Job Lists", "Index", "Jobs", "", new { @class = "list-group-item list-group-item-action bg-light" })
+                @Html.ActionLink(" Your Applied Job Lists", "MyIndex", "Applyjobs", "", new { @class = "list-group-item list-group-item-action bg-light" })
+
+            </div>
+        </div>
+
+    </div>
+</body>
+

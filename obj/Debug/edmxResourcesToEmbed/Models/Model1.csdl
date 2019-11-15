@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="StudentRepositoryModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="ApplyJob">
+    <Key>
+      <PropertyRef Name="ApplyId" />
+    </Key>
+    <Property Name="ApplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="JobID" Type="Int32" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="Skills" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Job" Relationship="Self.fk_Job" FromRole="ApplyJob" ToRole="Job" />
+    <NavigationProperty Name="tbl_Student" Relationship="Self.fk_Students" FromRole="ApplyJob" ToRole="tbl_Student" />
+  </EntityType>
+  <EntityType Name="Job">
+    <Key>
+      <PropertyRef Name="JobID" />
+    </Key>
+    <Property Name="JobID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CompanyName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Details" Type="String" MaxLength="250" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Designation" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LocationID" Type="Int32" />
+    <Property Name="Number_of_Positions" Type="Int32" />
+    <NavigationProperty Name="ApplyJobs" Relationship="Self.fk_Job" FromRole="Job" ToRole="ApplyJob" />
+    <NavigationProperty Name="tbl_Locations" Relationship="Self.fk_Location" FromRole="Job" ToRole="tbl_Locations" />
+  </EntityType>
+  <EntityType Name="tbl_Admin">
+    <Key>
+      <PropertyRef Name="AdminID" />
+    </Key>
+    <Property Name="AdminID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Contact" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Username" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="tbl_Apply">
+    <Key>
+      <PropertyRef Name="ApplyId" />
+    </Key>
+    <Property Name="ApplyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CertificationID" Type="Int32" />
+    <Property Name="StudentID" Type="Int32" />
+    <Property Name="Comments" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="StatusID" Type="Int32" />
+    <NavigationProperty Name="tbl_Certification" Relationship="Self.Fk_Ceritification" FromRole="tbl_Apply" ToRole="tbl_Certification" />
+    <NavigationProperty Name="tbl_Status" Relationship="Self.Fk_Status" FromRole="tbl_Apply" ToRole="tbl_Status" />
+    <NavigationProperty Name="tbl_Student" Relationship="Self.Fk_Student" FromRole="tbl_Apply" ToRole="tbl_Student" />
+  </EntityType>
+  <EntityType Name="tbl_Certification">
+    <Key>
+      <PropertyRef Name="CertificationID" />
+    </Key>
+    <Property Name="CertificationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CertificationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="About" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbl_Apply" Relationship="Self.Fk_Ceritification" FromRole="tbl_Certification" ToRole="tbl_Apply" />
+  </EntityType>
+  <EntityType Name="tbl_Graduation">
+    <Key>
+      <PropertyRef Name="GraduationID" />
+    </Key>
+    <Property Name="GraduationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="GraduationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbl_Student" Relationship="Self.Fk_Graduation" FromRole="tbl_Graduation" ToRole="tbl_Student" />
+  </EntityType>
+  <EntityType Name="tbl_Locations">
+    <Key>
+      <PropertyRef Name="LocationID" />
+    </Key>
+    <Property Name="LocationID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="LocationName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Jobs" Relationship="Self.fk_Location" FromRole="tbl_Locations" ToRole="Job" />
+  </EntityType>
+  <EntityType Name="tbl_Status">
+    <Key>
+      <PropertyRef Name="StatusID" />
+    </Key>
+    <Property Name="StatusID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Status" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="tbl_Apply" Relationship="Self.Fk_Status" FromRole="tbl_Status" ToRole="tbl_Apply" />
+  </EntityType>
+  <EntityType Name="tbl_Student">
+    <Key>
+      <PropertyRef Name="StudentID" />
+    </Key>
+    <Property Name="StudentID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FatherName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DateofBirth" Type="DateTime" Precision="0" />
+    <Property Name="GraduationID" Type="Int32" />
+    <Property Name="Percentage" Type="Int32" />
+    <Property Name="Contact" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="150" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="City" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="ApplyJobs" Relationship="Self.fk_Students" FromRole="tbl_Student" ToRole="ApplyJob" />
+    <NavigationProperty Name="tbl_Apply" Relationship="Self.Fk_Student" FromRole="tbl_Student" ToRole="tbl_Apply" />
+    <NavigationProperty Name="tbl_Graduation" Relationship="Self.Fk_Graduation" FromRole="tbl_Student" ToRole="tbl_Graduation" />
+  </EntityType>
+  <Association Name="fk_Job">
+    <End Role="Job" Type="Self.Job" Multiplicity="0..1" />
+    <End Role="ApplyJob" Type="Self.ApplyJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Job">
+        <PropertyRef Name="JobID" />
+      </Principal>
+      <Dependent Role="ApplyJob">
+        <PropertyRef Name="JobID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Students">
+    <End Role="tbl_Student" Type="Self.tbl_Student" Multiplicity="0..1" />
+    <End Role="ApplyJob" Type="Self.ApplyJob" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="ApplyJob">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="fk_Location">
+    <End Role="tbl_Locations" Type="Self.tbl_Locations" Multiplicity="0..1" />
+    <End Role="Job" Type="Self.Job" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Locations">
+        <PropertyRef Name="LocationID" />
+      </Principal>
+      <Dependent Role="Job">
+        <PropertyRef Name="LocationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Ceritification">
+    <End Role="tbl_Certification" Type="Self.tbl_Certification" Multiplicity="0..1" />
+    <End Role="tbl_Apply" Type="Self.tbl_Apply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Certification">
+        <PropertyRef Name="CertificationID" />
+      </Principal>
+      <Dependent Role="tbl_Apply">
+        <PropertyRef Name="CertificationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Status">
+    <End Role="tbl_Status" Type="Self.tbl_Status" Multiplicity="0..1" />
+    <End Role="tbl_Apply" Type="Self.tbl_Apply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Status">
+        <PropertyRef Name="StatusID" />
+      </Principal>
+      <Dependent Role="tbl_Apply">
+        <PropertyRef Name="StatusID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Student">
+    <End Role="tbl_Student" Type="Self.tbl_Student" Multiplicity="0..1" />
+    <End Role="tbl_Apply" Type="Self.tbl_Apply" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Student">
+        <PropertyRef Name="StudentID" />
+      </Principal>
+      <Dependent Role="tbl_Apply">
+        <PropertyRef Name="StudentID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_Graduation">
+    <End Role="tbl_Graduation" Type="Self.tbl_Graduation" Multiplicity="0..1" />
+    <End Role="tbl_Student" Type="Self.tbl_Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tbl_Graduation">
+        <PropertyRef Name="GraduationID" />
+      </Principal>
+      <Dependent Role="tbl_Student">
+        <PropertyRef Name="GraduationID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="StudentRepositoryEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="ApplyJobs" EntityType="Self.ApplyJob" />
+    <EntitySet Name="Jobs" EntityType="Self.Job" />
+    <EntitySet Name="tbl_Admin" EntityType="Self.tbl_Admin" />
+    <EntitySet Name="tbl_Apply" EntityType="Self.tbl_Apply" />
+    <EntitySet Name="tbl_Certification" EntityType="Self.tbl_Certification" />
+    <EntitySet Name="tbl_Graduation" EntityType="Self.tbl_Graduation" />
+    <EntitySet Name="tbl_Locations" EntityType="Self.tbl_Locations" />
+    <EntitySet Name="tbl_Status" EntityType="Self.tbl_Status" />
+    <EntitySet Name="tbl_Student" EntityType="Self.tbl_Student" />
+    <AssociationSet Name="fk_Job" Association="Self.fk_Job">
+      <End Role="Job" EntitySet="Jobs" />
+      <End Role="ApplyJob" EntitySet="ApplyJobs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Students" Association="Self.fk_Students">
+      <End Role="tbl_Student" EntitySet="tbl_Student" />
+      <End Role="ApplyJob" EntitySet="ApplyJobs" />
+    </AssociationSet>
+    <AssociationSet Name="fk_Location" Association="Self.fk_Location">
+      <End Role="tbl_Locations" EntitySet="tbl_Locations" />
+      <End Role="Job" EntitySet="Jobs" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Ceritification" Association="Self.Fk_Ceritification">
+      <End Role="tbl_Certification" EntitySet="tbl_Certification" />
+      <End Role="tbl_Apply" EntitySet="tbl_Apply" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Status" Association="Self.Fk_Status">
+      <End Role="tbl_Status" EntitySet="tbl_Status" />
+      <End Role="tbl_Apply" EntitySet="tbl_Apply" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Student" Association="Self.Fk_Student">
+      <End Role="tbl_Student" EntitySet="tbl_Student" />
+      <End Role="tbl_Apply" EntitySet="tbl_Apply" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_Graduation" Association="Self.Fk_Graduation">
+      <End Role="tbl_Graduation" EntitySet="tbl_Graduation" />
+      <End Role="tbl_Student" EntitySet="tbl_Student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

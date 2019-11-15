@@ -1,0 +1,81 @@
+﻿@model IEnumerable<Repository.Models.ApplyJob>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+
+}
+
+<h2 align="center">Applied Studnets Jobs Lists</h2>
+
+@*<table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Skills)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Job.CompanyName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tbl_Student.StudentID)
+            </th>
+
+            <th>
+                @Html.DisplayNameFor(model => model.tbl_Student.FirstName)
+            </th>
+            <th>
+                @Html.Label("Qualification")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tbl_Student.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tbl_Student.Contact)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.tbl_Student.City)
+            </th>
+
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Skills)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Job.CompanyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Student.StudentID)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Student.FirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Student.tbl_Graduation.GraduationName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Student.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Student.Contact)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.tbl_Student.City)
+            </td>
+
+
+            @*<td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ApplyId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ApplyId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ApplyId })
+            </td>
+    </tr>
+}
+
+</table>*@
+
+

@@ -1,0 +1,43 @@
+﻿@model Repository.Models.tbl_Certification
+
+@{
+    ViewBag.Title = "Details";
+        Layout = "~/Views/Shared/Logout.cshtml";
+
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CertificationID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CertificationID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CertificationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CertificationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.About)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.About)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CertificationID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

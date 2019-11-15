@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6a7c2bcd3d4a4bfd901709391187933d" Name="Diagram1">
+        <EntityTypeShape EntityType="StudentRepositoryModel.ApplyJob" Width="1.5" PointX="5.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentRepositoryModel.Job" Width="1.5" PointX="3" PointY="8.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentRepositoryModel.tbl_Admin" Width="1.5" PointX="5.75" PointY="9.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentRepositoryModel.tbl_Apply" Width="1.5" PointX="8.25" PointY="3.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentRepositoryModel.tbl_Certification" Width="1.5" PointX="6" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentRepositoryModel.tbl_Graduation" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentRepositoryModel.tbl_Locations" Width="1.5" PointX="0.75" PointY="9" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentRepositoryModel.tbl_Status" Width="1.5" PointX="6" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="StudentRepositoryModel.tbl_Student" Width="1.5" PointX="3" PointY="3" IsExpanded="true" />
+        <AssociationConnector Association="StudentRepositoryModel.fk_Job" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentRepositoryModel.fk_Students" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentRepositoryModel.fk_Location" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentRepositoryModel.Fk_Ceritification" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentRepositoryModel.Fk_Status" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentRepositoryModel.Fk_Student" ManuallyRouted="false" />
+        <AssociationConnector Association="StudentRepositoryModel.Fk_Graduation" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

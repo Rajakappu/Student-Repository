@@ -1,0 +1,103 @@
+﻿
+
+@{
+    ViewBag.Title = "Adminroles";
+    Layout = "~/Views/Shared/_TeacherLayoutPage.cshtml";
+
+}
+@*@if (Session["UserName"] != null)
+    {
+
+        <ul class="nav nav-tabs ">
+            <li class="nav-item redtext">
+                <a class="nav-link" style="color:darkred" href="~/Admin/AdminPersonalInfo">My Profile</a>
+            </li>
+            <li class="nav-item redtext">
+                <a class="nav-link" style="color:darkred" href="~/tbl_Student/Index">Student List</a>
+            </li>
+            <li class="nav-item redtext">
+                <a class="nav-link active" style="color:darkred" href="~/tbl_Certification/Create">Add Certification</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link active" style="color:darkred" href="~/tbl_Certification/Index">Avilable Certifications List</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color:darkred" href="~/Jobs/Create"> Add Jobs</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" style="color:darkred" href="~/Jobs/Index">Avilable Job Lists</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" style="color:darkred" href="~/ApplyJobs/Index"> Applied Job Lists</a>
+            </li>
+
+
+        </ul>
+
+    }*@
+@*<body class="jumbotron">
+    <div class="d-flex" id="wrapper">
+        <div class="bg-light border-right" id="sidebar-wrapper">*@
+@*<img src="~/Content/login-background.jpg" />*@
+@*<br />
+    <div class="sidebar-heading  text-info" align="center">
+        <h2>Admin Dashboard </h2>
+        @if (Session["FirstName"] != null)
+        {
+            <big>  Welcome @Session["FirstName"].ToString()</big>
+
+
+        }
+    </div>
+    <br />*@
+@*<div class="list-group list-group-flush">
+        @Html.ActionLink("My Profile", "AdminPersonalInfo", "Admin", "", new { @class = "list-group-item list-group-item-action bg-light " })
+
+        @Html.ActionLink("Student List", "Index", "tbl_Student", "", new { @class = "list-group-item list-group-item-action bg-light " })
+        @Html.ActionLink("Add Certification", "Create", "tbl_Certification", "", new { @class = "list-group-item list-group-item-action bg-light" })
+        @Html.ActionLink(" Avilable Certifications List", "Index", "tbl_Certification", "", new { @class = "list-group-item list-group-item-action bg-light" })
+        @Html.ActionLink("Add Jobs", "Create", "Jobs", "", new { @class = "list-group-item list-group-item-action bg-light" })
+        @Html.ActionLink(" Avilable Job Lists", "Index", "Jobs", "", new { @class = "list-group-item list-group-item-action bg-light" })
+        @Html.ActionLink(" Applied Job Lists", "Index", "ApplyJobs", "", new { @class = "list-group-item list-group-item-action bg-light" })
+
+    </div>*@
+@*</div>
+
+        </div>
+    </body>*@
+@{
+    if (TempData["message"] != null)
+    {
+        <script type="text/javascript">
+        alert(@Html.Raw(Json.Encode(TempData["message"])));
+        </script>
+    }
+}
+@using (Html.BeginForm())
+{
+    <fieldset>
+        <h4> Admin DashBoard </h4>
+        <br />
+        @if (Session["Email"] != null)
+        {
+            <h4>
+                Welcome @Session["Email"].ToString()
+            </h4>
+        }
+    </fieldset>
+    <br />
+    <table class="table table-responsive" style="color:black;">
+        <tr>
+            <td>@Html.ActionLink("Student List", "Index", "tbl_Student", "", new { @class = "btn btn-info" })</td>
+            <td>@Html.ActionLink("Add Certification", "Create", "tbl_Certification", "", new { @class = "btn btn-info" })</td>
+            <td>@Html.ActionLink(" Avilable Certifications List", "Index", "tbl_Certification", "", new { @class = "btn btn-info" })</td>
+            <td>@Html.ActionLink("Add Jobs", "Create", "Jobs", "", new { @class = "btn btn-info" })</td>
+            <td>
+                @Html.ActionLink(" Avilable Job Lists", "Index", "Jobs", "", new { @class = "btn btn-info" })</td>
+            <td> @Html.ActionLink(" Applied Job Lists", "Index", "ApplyJobs", "", new { @class = "btn btn-info" })</td>
+
+        </tr>
+    </table>
+}
+

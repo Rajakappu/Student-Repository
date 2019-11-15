@@ -1,0 +1,91 @@
+﻿@model IEnumerable<Repository.Models.Job>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayoutPage.cshtml";
+
+}
+<style>
+    #apply{
+        font-style:italic;
+        color:red;
+        background-color:aliceblue;
+    }
+</style>
+<h2 align="Center">Avilable jobs Lists</h2>
+@if (Session["StudentID"]!= null)
+{
+    <div align="center">
+        @Html.ActionLink("Apply Now", "Create", "Applyjobs", "", new { @class = "btn btn-primary" })
+    </div>
+}
+    <br />
+    <table class="table" id="apply">
+        <tr>
+            <th style="background-color:dodgerblue">
+                @Html.DisplayNameFor(model => model.CompanyName)
+            </th>
+            <th style="background-color:dodgerblue">
+                @Html.DisplayNameFor(model => model.Details)
+            </th>
+            <th style="background-color:dodgerblue">
+                @Html.DisplayNameFor(model => model.Designation)
+            </th>
+            <th style="background-color:dodgerblue">
+                @Html.DisplayNameFor(model => model.Number_of_Positions)
+            </th>
+            <th style="background-color:dodgerblue">
+                @Html.DisplayNameFor(model => model.tbl_Locations.LocationName)
+            </th>
+            @if (Session["StudentID"] == null)
+            {
+
+                <th style="background-color:dodgerblue"></th>
+            }
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="background-color:aqua">
+                    @Html.DisplayFor(modelItem => item.CompanyName)
+                </td>
+                <td style="background-color:aqua">
+                    @Html.DisplayFor(modelItem => item.Details)
+                </td>
+                <td style="background-color:aqua">
+                    @Html.DisplayFor(modelItem => item.Designation)
+                </td>
+                <td style="background-color:aqua">
+                    @Html.DisplayFor(modelItem => item.Number_of_Positions)
+                </td>
+                <td style="background-color:aqua">
+                    @Html.DisplayFor(modelItem => item.tbl_Locations.LocationName)
+                </td>
+                @if (Session["StudentID"] == null)
+                {
+                    <td style="background-color:aqua">
+                        @Html.ActionLink("Edit", "Edit", new { id = item.JobID }, new { @class = "btn btn-primary" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.JobID }, new { @class = "btn btn-info" }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.JobID }, new { @class = "btn btn-danger" })
+                    </td>
+
+                }
+
+            </tr>
+        }
+
+    </table>
+    @if (Session["StudentID"] == null)
+    {
+
+        <div>
+            @Html.ActionLink("Back", "Adminroles", "Home", "", new { @class = "btn btn-info" })
+        </div>
+    }
+    else
+    {
+        <div>
+            @Html.ActionLink("Back", "Studentroles", "Home", "", new { @class = "btn btn-info" })
+        </div>
+    }

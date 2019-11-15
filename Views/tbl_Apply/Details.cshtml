@@ -1,0 +1,75 @@
+﻿@model Repository.Models.tbl_Apply
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/Logout.cshtml";
+
+}
+
+<h2>Details</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Certification.CertificationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Certification.CertificationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Status.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Status.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Student.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Student.FirstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @if (Session["Username"] == null)
+    {
+
+
+    }
+</p>
+@if (Session["Username"] == null)
+{
+    <div>
+        @Html.ActionLink("Edit", "Create", new { id = Model.ApplyId })
+    </div>
+
+    <div>
+        @Html.ActionLink("Back to List", "MyIndex")
+    </div>
+}
+else
+{
+    <div>
+
+        @Html.ActionLink("Edit", "Edit", new { id = Model.ApplyId })
+    </div>
+    <div>
+    @Html.ActionLink("Back to List", "Index")
+    </div>
+
+}

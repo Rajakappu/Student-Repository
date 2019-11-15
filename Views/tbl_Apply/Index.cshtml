@@ -1,0 +1,113 @@
+﻿@model IEnumerable<Repository.Models.tbl_Apply>
+
+@{
+    ViewBag.Title = "Index";
+        Layout = "~/Views/Shared/Logout.cshtml";
+
+}
+
+<h2>Application Lists</h2>
+@using(Html.BeginForm())
+{
+<p>
+    <table>
+        <tr>
+            <th>
+                @Html.LabelForModel("Search by Status", htmlAttributes: new { @class = "control-label" })
+
+            </th>
+            <th>
+                @Html.DropDownList("StatusID", null, htmlAttributes: new { @class = "form-control" })
+
+            </th>
+            <th>
+                <input type="submit" value="Search"  class="btn btn-info"/>
+            </th>
+        </tr>
+    </table>
+
+</p>
+}                      
+<table class="table">
+    <tr>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ApplyId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Certification.CertificationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Student.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Student.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Student.tbl_Graduation.GraduationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Student.Contact)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Student.City)
+
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Status.Status)
+        </th>
+
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+
+    <th>
+        @Html.DisplayFor(model => item.ApplyId)
+    </th>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbl_Certification.CertificationName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbl_Student.FirstName)
+    </td>
+
+
+
+    <td>
+        @Html.DisplayFor(modelItem => item.tbl_Student.Email)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbl_Student.tbl_Graduation.GraduationName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbl_Student.Contact)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbl_Student.City)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Comments)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.tbl_Status.Status)
+    </td>
+
+    <td>
+        @Html.ActionLink("Update", "Edit", new { id = item.ApplyId } ) |
+        @Html.ActionLink("Details", "Details", new { id = item.ApplyId }) |
+        @Html.ActionLink("Delete", "Delete", new { id = item.ApplyId })
+    </td>
+</tr>
+    }
+
+</table>
+<div>
+    @Html.ActionLink("Back", "Adminroles", "Home")
+</div>

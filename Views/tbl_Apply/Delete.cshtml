@@ -1,0 +1,72 @@
+﻿@model Repository.Models.tbl_Apply
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/Logout.cshtml";
+
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Comments)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comments)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Certification.CertificationName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Certification.CertificationName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Status.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Status.Status)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.tbl_Student.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tbl_Student.FirstName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+        </div>
+
+
+    }
+</div>
+
+@if (Session["Username"] == null)
+{
+
+    @Html.ActionLink("Back to List", "MyIndex")
+}
+else
+{
+    @Html.ActionLink("Back to List", "Index")
+
+}

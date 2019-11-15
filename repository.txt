@@ -1,0 +1,48 @@
+
+CREATE TABLE tbl_Admin
+(
+	UserID int  primary key identity(100,1),
+	FirstName varchar(50),
+	LastName varchar(50),
+	Contact varchar(10) unique,
+	Username varchar(50) unique,
+	Password varchar(50) unique,
+	Email varchar(150) unique,
+	UserRole varchar(15) not null
+)
+ drop table tbl_Admin
+insert into tbl_Admin values('Pratik','Baser','8500222701','pbaser','pratik.baser@capgemini.com','p123','Admin')
+
+
+CREATE TABLE tbl_Graduation
+(         
+  GraduationID int primary key identity(1,1),
+  GraduationName varchar(50),
+  )
+
+
+  
+CREATE TABLE tbl_Student
+(
+    StudentID int primary key identity(1000,1),
+    FirstName varchar(50),
+	LastName varchar(50),
+	FatherName varchar(50),
+	DateofBirth date,
+	GraduationID int CONSTRAINT Fk_Graduation FOREIGN KEY(GraduationID) REFERENCES tbl_Graduation(GraduationID),
+	Percentage int,
+	Contact varchar(10) ,
+	Email varchar(150),
+	Password varchar(50),
+	City varchar(10)
+)
+
+
+insert into  tbl_Graduation values('U.G')
+Select*from tbl_Graduation
+
+insert into tbl_Student values('AnanthaNadh','Perakam','Subbarao','10-06-1995',1,73,'8328479101','saiananth135@gmail.com','a@123','Hyderabad')
+
+select*from tbl_Student
+
+create table tbl_StudentLogin(

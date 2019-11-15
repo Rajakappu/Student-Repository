@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Repository.Models.tbl_Apply>
+
+@{
+    ViewBag.Title = "ApplyList";
+}
+
+<h2>ApplicationList</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Certification.CertificationName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Student.FirstName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.tbl_Status.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Comments)
+        </th>
+
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_Certification.CertificationName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_Student.FirstName)
+        </td>
+
+        <td>
+            @Html.DisplayFor(modelItem => item.tbl_Status.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Comments)
+        </td>
+
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ApplyId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ApplyId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ApplyId })
+        </td>
+    </tr>
+}
+
+</table>
